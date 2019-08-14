@@ -1,6 +1,0 @@
-[submodule "trie"]
-	path = trie
-	url = ./trie
-[submodule "avl-trees"]
-	path = avl-trees
-	url = ./avl-trees
