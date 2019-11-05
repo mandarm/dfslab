@@ -6,7 +6,7 @@ import sys
 def insert_string(trie, s) :
     current_node = trie
     for c in s.lower() :
-        if c not in current_node : # need new node
+        if c not in current_node : # c is not a key in this dictionary
             new_node = {}
             current_node[c] = new_node
             current_node = new_node
@@ -21,14 +21,14 @@ def search(trie, s) :
             return False
         else :
             current_node = current_node[c]
-    return 'flag' in current_node and ['flag']
+    return 'flag' in current_node and ['flag'] # guard condition
 
 
 if __name__ == '__main__':
     if len(sys.argv) != 2 :
         sys.exit('Usage: %s <dict file name>' % sys.argv[0])
 
-    trie = { }
+    trie = { } # Just the first node
 
     with open(sys.argv[1]) as f : # with => don't need a f.close()
         for line in f: # ASSUMPTION: one word per line
