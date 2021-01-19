@@ -1,6 +1,7 @@
 #!/usr/bin/env ipython
 # coding=utf-8
 
+import pickle
 import sys
 
 def insert_string(trie, s) :
@@ -36,12 +37,16 @@ if __name__ == '__main__':
             # print("After inserting %s: %s" % (line, trie))
 
     # Exercise: how do we save this in a persistent structure?
+    with open("dict.pickle", "wb") as f : # wb = write binary (non-ASCII) file
+        pickle.dump(trie, f)
+    with open("dict.pickle", "rb") as f : # rb = read binary (non-ASCII) file
+        unpickled_trie = pickle.load(f)
 
     while True:
         s = input("Enter word to search for: ")
         if s == "quit" : # Why can you not use "is" ?
             break
-        if search(trie, s) :
+        if search(unpickled_trie, s) :
             print("Word found")
         else :
             print("Word not found")

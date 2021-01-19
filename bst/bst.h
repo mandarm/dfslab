@@ -5,7 +5,7 @@
 
 #include <time.h>
 
-typedef int DATA;
+typedef int DATA; // OR: typedef void * DATA;
 
 typedef struct node {
     DATA data;
